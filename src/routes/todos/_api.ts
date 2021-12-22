@@ -23,7 +23,7 @@ export const api = (request: RequestHandler, data?: Record<string, unknown>) => 
         break;  
             
         case  "DELETE":
-          todos = todos.filter(todo => todo.uid !== request.params.uid)
+          todos = todos.filter(todo => todo.uid !== request.params.uid);
           status = 200;
           break;
       
@@ -36,6 +36,7 @@ export const api = (request: RequestHandler, data?: Record<string, unknown>) => 
               return todo;
             });
           status = 200;
+          body = todos.find(todo => todo.uid === request.params.uid);
           break;  
 
 
@@ -43,7 +44,8 @@ export const api = (request: RequestHandler, data?: Record<string, unknown>) => 
             break;
     }
 
-    if(request.method.toUpperCase() !== "GET") {
+    if(request.method.toUpperCase() !== "GET"  && 
+    request.headers.accept !== "application/json") {
       return {
         status:303,
         headers: {
