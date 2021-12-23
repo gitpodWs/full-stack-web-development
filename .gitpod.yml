@@ -5,11 +5,18 @@ tasks:
     command: |
      export HMR_HOST=`gp url 3000` 
      npm run dev
+    env:
+      DATABASE_URL: postgres://gitpod@localhost/todos
+  - command: npx prisma studio
+    env:
+      DATABASE_URL: postgres://gitpod@localhost/todos
 ports:
   - port: 3000
     onOpen: open-browser
   - port: 5432
     onOpen: ignore
+  - port: 5555
+    onOpen: open-browser
   
 # tasks:
 #   - init: npm install
@@ -24,6 +31,7 @@ ports:
 vscode:
   extensions:
     - svelte.svelte-vscode
+    - prisma.prisma
 
 github:
   prebuilds:
