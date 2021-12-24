@@ -1,6 +1,6 @@
 import type { RequestHandler } from "@sveltejs/kit"
 import PrismaClient from "$lib/prisma";
-import { Prisma } from "@prisma/client";
+// import { Prisma } from "@prisma/client";
 
 //let todos: Todo[] = []; 
 
